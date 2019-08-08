@@ -1,0 +1,8 @@
+<%= simple_form_for cocktail do |f| %>
+
+<%= f.input :name %>
+
+<%= f.input :ingredients, as: :select, collection: ["lemon", "ice", "mint leaves"] %>
+
+<%= f.submit %>
+<% end %>

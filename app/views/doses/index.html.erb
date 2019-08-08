@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Doses</h1>
+  <%= link_to 'New Dose', new_dose_path %>
+  <br>
+  <ul>
+    <% @doses.each do |dose| %>
+    <li> 
+    <%= link_to dose.description, doses_path(dose) %>
+    </li>
+    <% end %>
+  </ul>
+</div>
