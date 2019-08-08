@@ -1,12 +1,22 @@
-<div class="container">
+<nav class="navbar navbar-light bg-light mb-3">
+  <form class="form-inline">
+    <button class="btn btn-outline-success" type="button"><%= link_to 'Back to cocktail', cocktails_path(@cocktail) %></button>
+  </form>
   <h1>Cocktail: <%= @cocktail.name %></h1>
+</nav>
+<div class="container">
   <% @cocktail.doses.each do |dose| %>
-    <p>Dose: <%= dose.description %>, Ingredient: <%= dose.ingredient.name %></p>
-
-    <%= link_to 'delete a dose', dose_path(dose), method: :delete  %>
-    <br>
+  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+      <p>Dose: <%= dose.description %></p>
+      <div class="card-body">
+        <p>Ingredient: <%= dose.ingredient.name %></p>
+    </div>
+  </div>
+  <button type="button" class="btn btn-warning  "><%= link_to 'delete a dose', dose_path(dose), method: :delete  %></button>
   <% end %>
-  <%= link_to 'add a dose', new_cocktail_dose_path(@cocktail) %>
-    <br>
-  <%= link_to 'Back to cocktail', cocktails_path(@cocktail) %>
+  <button type="button" class="btn btn-light"><%= link_to 'add a dose', new_cocktail_dose_path(@cocktail) %></button>
+  </div>
 </div>
+  
+
