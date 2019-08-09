@@ -4,15 +4,14 @@
   </form>
   <h1>Cocktails</h1>
 </nav>
+
 <div class="container">
-    
-  <div class="cards">
+  <div class="cards" >
     <% @cocktails.each do |cocktail| %>
-    <div class="card-category">
-      <%= link_to cocktail.name, cocktail_path(cocktail) %>
-    </div>  
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cocktail.photo.present? ? cl_image_path(cocktail.photo, height: 300, width: 400, crop: :fill) : image_path('cocktail-placeholder.jpg') %>')">
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </div>
     <% end %>
   </div>
 </div>
-
-

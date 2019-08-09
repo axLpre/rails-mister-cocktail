@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Galaxy.destroy_all
+Ingredient.destroy_all
 Ingredient.create(name: "lemon")
 Ingredient.create(name: "ice")
 Ingredient.create(name: "mint leaves")
+Galaxy.create!(name: 'Andromeda', remote_photo_url: 'http://apod.nasa.gov/apod/image/1407/m31_bers_960.jpg', address: 'next to the Milky Way')

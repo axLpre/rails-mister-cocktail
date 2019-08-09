@@ -1,13 +1,14 @@
 <nav class="navbar navbar-light bg-light mb-3">
   <form class="form-inline">
-    <button class="btn btn-outline-success" type="button"><%= link_to 'Back to cocktail', cocktails_path(@cocktail) %></button>
+    <button class="btn btn-outline-success" type="button"><%= link_to 'Back to cocktail', cocktails_path %></button>
   </form>
   <h1>Cocktail: <%= @cocktail.name %></h1>
 </nav>
 <div class="container">
   <% @cocktail.doses.each do |dose| %>
   <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header">
+    <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
       <p>Dose: <%= dose.description %></p>
       <div class="card-body">
         <p>Ingredient: <%= dose.ingredient.name %></p>
@@ -17,7 +18,7 @@
   <% end %>
   <button type="button" class="btn btn-light"><%= link_to 'add a dose', new_cocktail_dose_path(@cocktail) %></button>
   </div>
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+ 
 
 </div>
   
