@@ -4,22 +4,18 @@
   </form>
   <h1>Cocktail: <%= @cocktail.name %></h1>
 </nav>
-<div class="container">
-  <% @cocktail.doses.each do |dose| %>
-  <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
-      <p>Dose: <%= dose.description %></p>
-      <div class="card-body">
-        <p>Ingredient: <%= dose.ingredient.name %></p>
-    </div>
+<% @cocktail.doses.each do |dose| %>
+  <div class="container">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= @cocktail.photo.present? ? cl_image_path(@cocktail.photo, height: 300, width: 400, crop: :fill) : image_path('cocktail-placeholder.jpg') %>')">
+          <div class="card-body">
+            <p>Dose: <%= dose.description %></p>
+            <p>Ingredient: <%= dose.ingredient.name %></p>
+          </div>
+          <button type="button" class="btn btn-warning  "><%= link_to 'delete a dose', dose_path(dose), method: :delete  %></button>
+        </div>
+      </div>
   </div>
-  <button type="button" class="btn btn-warning  "><%= link_to 'delete a dose', dose_path(dose), method: :delete  %></button>
-  <% end %>
-  <button type="button" class="btn btn-light"><%= link_to 'add a dose', new_cocktail_dose_path(@cocktail) %></button>
-  </div>
- 
-
-</div>
-  
-
+<% end %>
+          <button type="button" class="btn btn-light"><%= link_to 'add a dose', new_cocktail_dose_path(@cocktail) %></button>
